@@ -15,18 +15,16 @@
  */
 function logconfig_adminapi_get_loggers()
 {
-    $loggers = array(
-    	['id' => 'error_log',   'name' => 'Error Log',      'object' => 'logconfig_errorlog'],
-    	['id' => 'html',        'name' => 'HTML',           'object' => 'logconfig_html'],
-    	['id' => 'javascript',  'name' => 'Javascript Log', 'object' => 'logconfig_javascript'],
-    	['id' => 'mail',        'name' => 'Mail',           'object' => 'logconfig_mail'],
-    	['id' => 'mozilla',     'name' => 'Mozilla',        'object' => 'logconfig_mozilla'],
-    	['id' => 'simple',      'name' => 'Simple',         'object' => 'logconfig_simple'],
-    	['id' => 'sql',         'name' => 'SQL',            'object' => 'logconfig_sql'],
-    	['id' => 'syslog',      'name' => 'System Log',     'object' => 'logconfig_syslog'],
-    );
+    $loggers = [
+        ['id' => 'error_log',   'name' => 'Error Log',      'object' => 'logconfig_errorlog'],
+        ['id' => 'html',        'name' => 'HTML',           'object' => 'logconfig_html'],
+        ['id' => 'javascript',  'name' => 'Javascript Log', 'object' => 'logconfig_javascript'],
+        ['id' => 'mail',        'name' => 'Mail',           'object' => 'logconfig_mail'],
+        ['id' => 'mozilla',     'name' => 'Mozilla',        'object' => 'logconfig_mozilla'],
+        ['id' => 'simple',      'name' => 'Simple',         'object' => 'logconfig_simple'],
+        ['id' => 'sql',         'name' => 'SQL',            'object' => 'logconfig_sql'],
+        ['id' => 'syslog',      'name' => 'System Log',     'object' => 'logconfig_syslog'],
+    ];
 
     return $loggers;
 }
-
-?>

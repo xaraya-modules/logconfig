@@ -18,11 +18,17 @@
     function logconfig_admin_modifyconfig()
     {
         // Security Check
-        if (!xarSecurityCheck('AdminLogconfig')) return;
-        if (!xarVarFetch('phase', 'str:1:100', $phase, 'modify', XARVAR_NOT_REQUIRED, XARVAR_PREP_FOR_DISPLAY)) return;
-        if (!xarVarFetch('tab', 'str:1:100', $data['tab'], 'general', XARVAR_NOT_REQUIRED)) return;
+        if (!xarSecurityCheck('AdminLogconfig')) {
+            return;
+        }
+        if (!xarVarFetch('phase', 'str:1:100', $phase, 'modify', XARVAR_NOT_REQUIRED, XARVAR_PREP_FOR_DISPLAY)) {
+            return;
+        }
+        if (!xarVarFetch('tab', 'str:1:100', $data['tab'], 'general', XARVAR_NOT_REQUIRED)) {
+            return;
+        }
 
-        $data['module_settings'] = xarMod::apiFunc('base','admin','getmodulesettings',array('module' => 'logconfig'));
+        $data['module_settings'] = xarMod::apiFunc('base', 'admin', 'getmodulesettings', ['module' => 'logconfig']);
         $data['module_settings']->setFieldList('items_per_page, use_module_alias, module_alias_name, enable_short_urls');
         $data['module_settings']->getItem();
 
@@ -44,25 +50,29 @@
 
             case 'update':
                 // Confirm authorisation code
-                if (!xarSecConfirmAuthKey()) return;
+                if (!xarSecConfirmAuthKey()) {
+                    return;
+                }
                 switch ($data['tab']) {
                     case 'general':
                     /* Remove this for now
                         $isvalid = $data['module_settings']->checkInput();
                         if (!$isvalid) {
-                            return xarTplModule('logconfig','admin','modifyconfig', $data);        
+                            return xarTplModule('logconfig','admin','modifyconfig', $data);
                         } else {
                             $itemid = $data['module_settings']->updateItem();
                         }
-					*/
-						// The overall switch to enable logging
-						if (!xarVar::fetch('logenabled', 'int', $logenabled, 0, xarVar::NOT_REQUIRED)) return;
-					
-						// Update the config.system file
-						$variables = array('Log.Enabled' => $logenabled);
-						xarMod::apiFunc('installer','admin','modifysystemvars', array('variables' => $variables));
-                                                
-                        xarController::redirect(xarModURL('logconfig', 'admin', 'modifyconfig', array('tab' => 'general')));
+                    */
+                        // The overall switch to enable logging
+                        if (!xarVar::fetch('logenabled', 'int', $logenabled, 0, xarVar::NOT_REQUIRED)) {
+                            return;
+                        }
+
+                        // Update the config.system file
+                        $variables = ['Log.Enabled' => $logenabled];
+                        xarMod::apiFunc('installer', 'admin', 'modifysystemvars', ['variables' => $variables]);
+
+                        xarController::redirect(xarModURL('logconfig', 'admin', 'modifyconfig', ['tab' => 'general']));
                         break;
                     case 'tab2':
                         break;
@@ -72,7 +82,7 @@
                         break;
                 }
 
-                xarResponse::redirect(xarModURL('logconfig', 'admin', 'modifyconfig',array('tab' => $data['tab'])));
+                xarResponse::redirect(xarModURL('logconfig', 'admin', 'modifyconfig', ['tab' => $data['tab']]));
                 // Return
                 return true;
                 break;
@@ -81,4 +91,3 @@
         $data['authid'] = xarSecGenAuthKey();
         return $data;
     }
-?>

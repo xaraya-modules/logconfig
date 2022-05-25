@@ -26,12 +26,10 @@ $modversion['admin']        = 1;
 $modversion['user']         = 0;
 $modversion['class']        = 'Admin';
 $modversion['category']     = 'System';
-$modversion['dependency']     = array();
-$modversion['dependencyinfo'] = array(
-								0 => array(
-										'name' => 'Xaraya Core',
-										'version_ge' => '2.4.0'
-									 ),
-								);
-
-?>
+$modversion['dependency']     = [];
+$modversion['dependencyinfo'] = [
+                                0 => [
+                                        'name' => 'Xaraya Core',
+                                        'version_ge' => '2.4.0',
+                                     ],
+                                ];

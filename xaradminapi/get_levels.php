@@ -20,5 +20,3 @@ function logconfig_adminapi_get_levels()
 
     return $levels;
 }
-
-?>

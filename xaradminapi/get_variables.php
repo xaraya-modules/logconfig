@@ -12,27 +12,25 @@
  */
 /**
  * A central registry of all the variables our loggers use
- * 
+ *
  * The keys are the logger object properties, the values are the corresponding fields in the configuration file
  */
 function logconfig_adminapi_get_variables()
 {
     $vars = [
-    		'filename'    => 'Filename',
-    		'maxfilesize' => 'MaxFileSize',
-    		'loglevel'    => 'Level',
-    		'mode'        => 'Mode',
-    		'recipient'   => 'Recipient',
-    		'sender'      => 'Sender',
-    		'subject'     => 'Subject',
-    		'timeformat'  => 'Timeformat',
-    		'sqltable'    => 'SQLTable',
-    		'facility'    => 'Facility',
-    		'options'     => 'Options',
-    		'sqltable'    => 'SQLTable',
-    		];
+            'filename'    => 'Filename',
+            'maxfilesize' => 'MaxFileSize',
+            'loglevel'    => 'Level',
+            'mode'        => 'Mode',
+            'recipient'   => 'Recipient',
+            'sender'      => 'Sender',
+            'subject'     => 'Subject',
+            'timeformat'  => 'Timeformat',
+            'sqltable'    => 'SQLTable',
+            'facility'    => 'Facility',
+            'options'     => 'Options',
+            'sqltable'    => 'SQLTable',
+            ];
 
     return $vars;
 }
-
-?>

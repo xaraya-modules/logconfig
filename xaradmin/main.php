@@ -16,10 +16,10 @@
  */
 function logconfig_admin_main()
 {
-    if (!xarSecurityCheck('ManageLogConfig')) return;
+    if (!xarSecurityCheck('ManageLogConfig')) {
+        return;
+    }
 
     // Return the template variables defined in this function
-    return array();
+    return [];
 }
-
-?>

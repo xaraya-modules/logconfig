@@ -19,10 +19,12 @@ function logconfig_admin_view()
 {
     // Security check - important to do this as early as possible to avoid
     // potential security holes or just too much wasted processing
-    if (!xarSecurityCheck('AdminLogConfig')) return;
+    if (!xarSecurityCheck('AdminLogConfig')) {
+        return;
+    }
 
     // Whether or not the fallback logger is running
-    if (xarMod::apiFunc('logconfig','admin','islogon') && xarLog::fallbackPossible() && empty(xarLog::availables())) {
+    if (xarMod::apiFunc('logconfig', 'admin', 'islogon') && xarLog::fallbackPossible() && empty(xarLog::availables())) {
         $data['fallbackOn'] = true;
     } else {
         $data['fallbackOn'] = false;
@@ -30,16 +32,14 @@ function logconfig_admin_view()
 
     // The name of the file the fallback logger writes to
     $data['fallbackFile'] = xarLog::FallbackFile();
-    
+
     // The defined loggers
-    $definitions = xarMod::apiFunc('logconfig','admin','get_loggers');
-    
+    $definitions = xarMod::apiFunc('logconfig', 'admin', 'get_loggers');
+
     sys::import('modules.dynamicdata.class.objects.base');
     foreach ($definitions as $logger) {
-    	$data['loggers'][$logger['id']] = DataObjectMaster::getObject(['name' => $logger['object']]);
-    	$data['loggers'][$logger['id']] = xarMod::apiFunc('logconfig', 'admin', 'charge_loggerobject', array('logger' => $data['loggers'][$logger['id']]));
+        $data['loggers'][$logger['id']] = DataObjectMaster::getObject(['name' => $logger['object']]);
+        $data['loggers'][$logger['id']] = xarMod::apiFunc('logconfig', 'admin', 'charge_loggerobject', ['logger' => $data['loggers'][$logger['id']]]);
     }
     return $data;
 }
-
-?>

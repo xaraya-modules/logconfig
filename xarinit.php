@@ -19,14 +19,14 @@
  */
 function logconfig_init()
 {
-# --------------------------------------------------------
+    # --------------------------------------------------------
 #
-# Create DD objects
+    # Create DD objects
 #
-    PropertyRegistration::importPropertyTypes(false,array('modules/logconfig/xarproperties'));
+    PropertyRegistration::importPropertyTypes(false, ['modules/logconfig/xarproperties']);
 
     $module = 'logconfig';
-    $objects = array(
+    $objects = [
                      'logconfig_errorlog',
                      'logconfig_html',
                      'logconfig_javascript',
@@ -35,11 +35,13 @@ function logconfig_init()
                      'logconfig_simple',
                      'logconfig_sql',
                      'logconfig_syslog',
-                     );
-    if(!xarMod::apiFunc('modules','admin','standardinstall',array('module' => $module, 'objects' => $objects))) return;
+                     ];
+    if (!xarMod::apiFunc('modules', 'admin', 'standardinstall', ['module' => $module, 'objects' => $objects])) {
+        return;
+    }
 
-    xarMasks::register('ManageLogConfig','All','logconfig','Item','All','ACCESS_DELETE');
-    xarMasks::register('AdminLogConfig','All','logconfig','Item','All','ACCESS_ADMIN');
+    xarMasks::register('ManageLogConfig', 'All', 'logconfig', 'Item', 'All', 'ACCESS_DELETE');
+    xarMasks::register('AdminLogConfig', 'All', 'logconfig', 'Item', 'All', 'ACCESS_ADMIN');
 
     // Initialisation successful
     return logconfig_upgrade('0.1.1');
@@ -54,12 +56,15 @@ function logconfig_init()
 function logconfig_upgrade($oldversion)
 {
     // Upgrade dependent on old version number
-    switch($oldversion) {
+    switch ($oldversion) {
         case '0.1.0':
             $logConfigFile = xarCoreGetVarDirPath() . '/cache/config.log.php';
-            if (file_exists($logConfigFile)) unlink($logConfigFile);
+            if (file_exists($logConfigFile)) {
+                unlink($logConfigFile);
+            }
             //When people turn it on again it will produce the config in the
             //new directory, no need to do it in here.
+            // no break
         case '0.1.1':
             break;
     }
@@ -77,7 +82,5 @@ function logconfig_upgrade($oldversion)
 function logconfig_delete()
 {
     $module = 'logconfig';
-    return xarModAPIFunc('modules','admin','standarddeinstall',array('module' => $module));
+    return xarModAPIFunc('modules', 'admin', 'standarddeinstall', ['module' => $module]);
 }
-
-?>

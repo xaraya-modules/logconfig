@@ -20,12 +20,10 @@
 function logconfig_xartables()
 {
     // Initialise table array
-    $xartable = array();
+    $xartable = [];
 
     // There are no module-specific tables here...
 
     // Return the table information
     return $xartable;
 }
-
-?>
