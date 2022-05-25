@@ -2,7 +2,7 @@
     "name": "xaraya/logconfig",
     "type": "xaraya-module",
     "description": "Module for Configuration the Logging System",
-    "homepage": "https://github.com/mikespub/xaraya-logconfig",
+    "homepage": "https://github.com/xaraya-modules/logconfig",
     "license": "GPL-2.0-or-later",
     "require": {},
     "autoload": {
