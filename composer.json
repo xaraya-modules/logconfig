@@ -1,0 +1,12 @@
+{
+    "name": "xaraya/logconfig",
+    "type": "xaraya-module",
+    "description": "Module for Configuration the Logging System",
+    "homepage": "https://github.com/mikespub/xaraya-logconfig",
+    "license": "GPL-2.0-or-later",
+    "require": {},
+    "autoload": {
+        "classmap": ["./"],
+        "exclude-from-classmap": ["/vendor/"]
+    }
+}
