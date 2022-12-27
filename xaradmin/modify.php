@@ -49,7 +49,6 @@ function logconfig_admin_modify($args)
     $data['tplmodule'] = 'logconfig';
 
     if ($data['confirm']) {
-
         // Check for a valid confirmation key
         if (!xarSecConfirmAuthKey()) {
             return;
