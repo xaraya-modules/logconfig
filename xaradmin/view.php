@@ -19,7 +19,7 @@ function logconfig_admin_view()
 {
     // Security check - important to do this as early as possible to avoid
     // potential security holes or just too much wasted processing
-    if (!xarSecurityCheck('AdminLogConfig')) {
+    if (!xarSecurity::check('AdminLogConfig')) {
         return;
     }
 

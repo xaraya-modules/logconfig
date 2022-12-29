@@ -16,7 +16,7 @@
  */
 function logconfig_admin_main()
 {
-    if (!xarSecurityCheck('ManageLogConfig')) {
+    if (!xarSecurity::check('ManageLogConfig')) {
         return;
     }
 

@@ -58,7 +58,7 @@ function logconfig_upgrade($oldversion)
     // Upgrade dependent on old version number
     switch ($oldversion) {
         case '0.1.0':
-            $logConfigFile = xarCoreGetVarDirPath() . '/cache/config.log.php';
+            $logConfigFile = sys::varpath() . '/cache/config.log.php';
             if (file_exists($logConfigFile)) {
                 unlink($logConfigFile);
             }
@@ -82,5 +82,5 @@ function logconfig_upgrade($oldversion)
 function logconfig_delete()
 {
     $module = 'logconfig';
-    return xarModAPIFunc('modules', 'admin', 'standarddeinstall', ['module' => $module]);
+    return xarMod::apiFunc('modules', 'admin', 'standarddeinstall', ['module' => $module]);
 }
