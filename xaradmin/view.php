@@ -38,7 +38,7 @@ function logconfig_admin_view()
 
     sys::import('modules.dynamicdata.class.objects.base');
     foreach ($definitions as $logger) {
-        $data['loggers'][$logger['id']] = DataObjectMaster::getObject(['name' => $logger['object']]);
+        $data['loggers'][$logger['id']] = DataObjectFactory::getObject(['name' => $logger['object']]);
         $data['loggers'][$logger['id']] = xarMod::apiFunc('logconfig', 'admin', 'charge_loggerobject', ['logger' => $data['loggers'][$logger['id']]]);
     }
     return $data;

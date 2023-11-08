@@ -43,7 +43,7 @@ function logconfig_admin_modify($args)
 
     sys::import('modules.dynamicdata.class.objects.base');
     $objectname = 'logconfig_' . $logger;
-    $data['object'] = DataObjectMaster::getObject(['name' => $objectname]);
+    $data['object'] = DataObjectFactory::getObject(['name' => $objectname]);
     $data['object'] = xarMod::apiFunc('logconfig', 'admin', 'charge_loggerobject', ['logger' => $data['object']]);
 
     $data['tplmodule'] = 'logconfig';
