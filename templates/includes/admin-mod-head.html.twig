@@ -1,0 +1,14 @@
+{# @logconfig/includes/admin-mod-head.html.twig #}
+
+{% block admin_mod_head %}
+<div class="xar-mod-head">
+        <span class="xar-mod-title">
+            {% if xar_modulevar('assyria', 'use_module_alias') %}
+                {{ xar_var({scope: "module", module: "logconfig", name: "module_alias_name"}) }}
+            {% else %}
+                LogConfig Administration
+            {% endif %}
+        </span>
+        {{ include('@logconfig/includes/admin-menu.html.twig') }}
+    </div>
+{% endblock %}

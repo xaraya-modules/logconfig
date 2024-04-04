@@ -1,0 +1,84 @@
+{# @logconfig/objects/showform-logconfig_mail.html.twig #}
+
+{% block showform_logconfig_mail %}
+<div class="xar-row">
+        <div class="xar-col">
+        	Logger
+        </div>
+        <div class="xar-col">
+           Mail Logger
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Type' %}
+            {{ xar_data_label({property: properties['type'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['type']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Description' %}
+            {{ xar_data_label({property: properties['description'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['description']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Sender' %}
+            {{ xar_data_label({property: properties['sender'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['sender']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Recipient' %}
+            {{ xar_data_label({property: properties['recipient'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['recipient']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Subject' %}
+            {{ xar_data_label({property: properties['subject'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['subject']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Time Format' %}
+            {{ xar_data_label({property: properties['timeformat'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['timeformat']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Log Levels' %}
+            {{ xar_data_label({property: properties['loglevel'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['loglevel'], layout: "vertical"}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'State' %}
+            {{ xar_data_label({property: properties['state'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['state']}) }}
+        </div>
+    </div>
+{% endblock %}

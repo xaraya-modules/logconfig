@@ -1,0 +1,66 @@
+{# @logconfig/objects/showform-logconfig_sql.html.twig #}
+
+{% block showform_logconfig_sql %}
+<div class="xar-row">
+        <div class="xar-col">
+        	Logger
+        </div>
+        <div class="xar-col">
+           SQL Logger
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Type' %}
+            {{ xar_data_label({property: properties['type'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['type']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Description' %}
+            {{ xar_data_label({property: properties['description'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['description']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'SQL Table' %}
+            {{ xar_data_label({property: properties['sqltable'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['sqltable']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Time Format' %}
+            {{ xar_data_label({property: properties['timeformat'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['timeformat']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Log Levels' %}
+            {{ xar_data_label({property: properties['loglevel'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['loglevel'], layout: "vertical"}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'State' %}
+            {{ xar_data_label({property: properties['state'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['state']}) }}
+        </div>
+    </div>
+{% endblock %}

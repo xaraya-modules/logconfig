@@ -1,0 +1,64 @@
+{# @logconfig/admin/view.html.twig #}
+
+{% block view %}
+{{ xar_style({scope: "module", module: "base", file: "navtabs"}) }}
+    {{ include('@logconfig/includes/admin-mod-head.html.twig') }}
+        
+    <div class="xar-mod-body">
+		<h2>List of Loggers</h2>
+
+		<div style="text-align: center;">
+			<table width="80%" border="1" cellspacing="2" cellpadding="2">
+				<tr>
+					<th>Type</th>
+					<th>Description</th>
+					<th>State</th>
+					<th>Action</th>
+				</tr>
+
+				{% for itemid, logger in loggers %}
+					{% set properties = logger.properties %}
+					<tr>
+						<td>
+							{{ xar_data_output({property: properties['type']}) }}
+						</td>
+						<td>
+							{{ xar_data_output({property: properties['description']}) }}
+						</td>
+						<td>
+							{{ xar_data_output({property: properties['state']}) }}
+						</td>
+						<td style="text-align: center">
+							<a href="{{ xar_moduleurl('logconfig','admin','modify',{'logger': properties['type'].value}) }}">Configure</a>
+						</td>
+
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+
+		{{ xar_translate('There is a fallback mechanism which will log to file', fallbackFile) }}
+		<br />
+		For this fallback mechanism to work, it is necessary for this file to exist and be writable by the http server user. It also requires that logging be enabled but all available loggers be inactive.
+		{% if xar_apifunc('logconfig', 'admin', 'islogon') %}
+			<div style="color: green">
+				Logging is currently enabled
+			</div>
+		{% else %}
+			<div style="color: red">
+				Logging is currently disabled
+			</div>
+		{% endif %}
+		{% if fallbackOn %}
+			<div style="color: green">
+				{{ xar_translate('Because the file #(1) is present and writable, it is being used as the fallback mechanism for logging purposes.', fallbackFile) }}
+			</div>
+		{% else %}
+			<div style="color: red">
+				Fallback logging is currently not active.
+			</div>
+		{% endif %}
+		<br />
+	    {{ include('@logconfig/includes/logging_capability.html.twig') }}
+	</div>
+{% endblock %}

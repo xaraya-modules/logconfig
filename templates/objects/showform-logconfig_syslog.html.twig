@@ -1,0 +1,88 @@
+{# @logconfig/objects/showform-logconfig_syslog.html.twig #}
+
+{% block showform_logconfig_syslog %}
+<div class="xar-row">
+        <div class="xar-col">
+        	Logger
+        </div>
+        <div class="xar-col">
+           Syslog Logger
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Type' %}
+            {{ xar_data_label({property: properties['type'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['type']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Description' %}
+            {{ xar_data_label({property: properties['description'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['description']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Facility' %}
+            {{ xar_data_label({type: properties['facility'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {% set options = [
+            			{'id': 'LOG_AUTH',     'name': 'LOG_AUTH'},
+            			{'id': 'LOG_AUTHPRIV', 'name': 'LOG_AUTHPRIV'},
+            			{'id': 'LOG_CRON',     'name': 'LOG_CRON'},
+            			{'id': 'LOG_DAEMON',   'name': 'LOG_DAEMON'},
+            			{'id': 'LOG_KERN',     'name': 'LOG_KERN'},
+            			{'id': 'LOG_LPR',      'name': 'LOG_LPR'},
+            			{'id': 'LOG_MAIL',     'name': 'LOG_MAIL'},
+            			{'id': 'LOG_NEWS',     'name': 'LOG_NEWS'},
+            			{'id': 'LOG_SYSLOG',   'name': 'LOG_SYSLOG'},
+            			{'id': 'LOG_USER',     'name': 'LOG_USER'},
+            			{'id': 'LOG_UUCP',     'name': 'LOG_UUCP'},
+            		] %}
+            {{ xar_data_input({property: properties['facility'], options: options}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Options' %}
+            {{ xar_data_label({property: properties['options'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['options']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Time Format' %}
+            {{ xar_data_label({property: properties['timeformat'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['timeformat']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Log Levels' %}
+            {{ xar_data_label({property: properties['loglevel'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['loglevel'], layout: "vertical"}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'State' %}
+            {{ xar_data_label({property: properties['state'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['state']}) }}
+        </div>
+    </div>
+{% endblock %}

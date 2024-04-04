@@ -1,0 +1,63 @@
+{# @logconfig/includes/logging_capability.html.twig #}
+
+{% block logging_capability %}
+{% set read_sys = is_readable(xar_coremethod('sys', 'varpath') ~ '/config.system.php') %}
+    {% set read_log = is_readable(xar_coremethod('sys', 'varpath') ~ '/logs/config.log.php') %}
+    {% set write_sys = is_writeable(xar_coremethod('sys', 'varpath') ~ '/config.system.php') %}
+    {% set write_log = is_writeable(xar_coremethod('sys', 'varpath') ~ '/logs/config.log.php') %}
+    
+    {% if read_sys %}
+		<div style="color: green">
+    		The system configuration file config.system.php is readable.
+    	</div>
+    {% else %}
+ 		<div style="color: red">
+    		The system configuration file config.system.php is not readable.
+    	</div>
+	{% endif %}
+    {% if write_sys %}
+		<div style="color: green">
+    		The system configuration file config.system.php is writeable.
+    	</div>
+    {% else %}
+ 		<div style="color: red">
+    		The system configuration file config.system.php is not writeable.
+    	</div>
+	{% endif %}
+    {% if read_log %}
+		<div style="color: green">
+    		The logging configuration file config.log.php is readable.
+    	</div>
+    {% else %}
+ 		<div style="color: red">
+    		The logging configuration file config.log.php is not readable.
+    	</div>
+	{% endif %}
+    {% if write_log %}
+		<div style="color: green">
+    		The logging configuration file config.log.php is writeable.
+    	</div>
+    {% else %}
+ 		<div style="color: red">
+    		The logging configuration file config.log.php is not writeable.
+    	</div>
+	{% endif %}
+	{% if not (read_sys and write_sys and read_sys and write_log) %}
+		For best performance both files should be readable and writeable
+	{% endif %}
+	<br/>
+	<div>
+		With this setup:
+	</div>
+	<div>
+		{% if read_sys and not read_log %}
+			You cannot turn logging on or off
+		{% elseif write_sys and not read_log %}
+			You can turn logging on or off, and you can configure and enable fallback logging. You cannot run any of the loggers.
+		{% elseif write_sys and read_log and not write_log %}
+			You can turn logging on or off, and you can configure and enable fallback logging. You can also run the different loggers as they are, but you cannot configure them.
+		{% elseif write_sys and write_log %}
+			You can turn logging on or off, and you can configure and enable fallback logging. You can also configure and run the different loggers.
+		{% endif %}
+	</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{# @logconfig/admin/modifyconfig.html.twig #}
+
+{% block modifyconfig %}
+{{ xar_style({scope: "module", module: "base", file: "navtabs"}) }}
+    {{ include('@logconfig/includes/admin-mod-head.html.twig') }}
+
+    <div class="xar-mod-body">
+        <h2>
+            Modify Configuration
+        </h2>
+        {% set xmldata = 'modifyconfig' %}
+        {{ include('@base/includes/admin-menu-skel.html.twig') }}
+        {# <!--
+             - - - - - - - - - - - - - - - - - - - Begin General Options  - - - - - - - - - - - - - - - - - - -
+        --> #}
+        {% if tab == 'general' %}
+            <form method="post" action="&xar-modurl-logconfig-admin-modifyconfig;" enctype="application/x-www-form-urlencoded">
+            {# <!--
+                <fieldset>
+                    <legend>
+                        General Options
+                    </legend>
+                    {{ xar_data_form({object: module_settings}) }}
+                </fieldset>
+            --> #}
+                <fieldset>
+                    <legend>Enable Logging</legend>
+					<label for="bar" title="{{ xar_translate('The cipher we are using') }}" class="xar-form-label">                                
+						Enable logging:                                
+					</label>
+					{% set options = [
+							{'id': 0, 'name': xar_translate('No')},
+							{'id': 1, 'name': xar_translate('Yes')},
+						] %}
+					{% set checked = xar_coremethod('xarSystemVars', 'get', [sys..CONFIG, 'Log.Enabled']) %}
+					{{ xar_data_input({type: "radio", name: "logenabled", value: checked, options: options}) }}
+                </fieldset>
+                <input type="hidden" name="tab" id="tab" value="{{ tab }}"/>
+                {{ include('@base/includes/update-button.html.twig') }}
+            </form>
+	    	<br/>
+	    	{{ include('@logconfig/includes/logging_capability.html.twig') }}
+        {# <!--
+             - - - - - - - - - - - - - - - - - - - Begin Tab2 Options  - - - - - - - - - - - - - - - - - - -
+        --> #}
+            {% elseif tab == 'tab2' %}
+        {# <!--
+             - - - - - - - - - - - - - - - - - - - Begin Tab3 Options  - - - - - - - - - - - - - - - - - - -
+        --> #}
+            {#  
+                 - - - - - - - - - - - - - - - - - - - Begin Tab3 Options  - - - - - - - - - - - - - - - - - - -
+             #}
+            {% elseif tab == 'tab3' %}
+        {% endif %}
+    </div>
+{% endblock %}

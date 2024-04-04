@@ -1,0 +1,34 @@
+{# @logconfig/admin/modify.html.twig #}
+
+{% block modify %}
+{{ xar_style({scope: "module", module: "base", file: "navtabs"}) }}
+    {{ include('@logconfig/includes/admin-mod-head.html.twig') }}
+
+    <div class="xar-mod-body">
+		<h2>Configure a Logger</h2>
+	
+        <form method="post" action="{{ xar_currenturl() }}">
+            <fieldset>
+                <legend>Logger Configuration</legend>
+                {{ xar_data_form({object: object, tplmodule: tplmodule}) }}
+            </fieldset>
+            <div class="xar-row">
+                <div class="xar-col">
+                </div>
+                <div class="xar-col">
+                    <input type="hidden" name="authid" id="authid" value="{{ xar_coremethod('xarSec', 'genAuthKey', ['logconfig']) }}"/>
+                    <input type="hidden" name="name" id="name" value="{{ object.name }}"/>
+                    <input type="hidden" name="itemid" id="itemid" value="{{ object.itemid }}"/>
+                    <input type="hidden" name="tplmodule" id="tplmodule" value="{{ tplmodule }}"/>
+                    <input type="hidden" name="confirm" id="confirm" value="true"/>
+                    {% set label = 'Cancel' %}
+                    {{- xar_button({type: "cancel", name: "cancel", value: label}) -}}&#160;
+                    {% set label = 'Update' %}
+                    {{- xar_button({type: "submit", name: "post", value: label}) -}}&#160;
+                    {% set label = 'Update and Exit' %}
+                    {{- xar_button({type: "submit", name: "exit", label: label}) -}}
+                </div>
+            </div>
+        </form>
+	</div>
+{% endblock %}

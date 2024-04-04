@@ -1,0 +1,84 @@
+{# @logconfig/objects/showform-logconfig_simple.html.twig #}
+
+{% block showform_logconfig_simple %}
+<div class="xar-row">
+        <div class="xar-col">
+        	Logger
+        </div>
+        <div class="xar-col">
+           Simple Logger
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Type' %}
+            {{ xar_data_label({property: properties['type'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['type']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Description' %}
+            {{ xar_data_label({property: properties['description'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['description']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'File' %}
+            {{ xar_data_label({property: properties['filename'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['filename']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'File mode' %}
+            {{ xar_data_label({property: properties['mode'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['mode']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Maximum File Size' %}
+            {{ xar_data_label({property: properties['maxfilesize'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['maxfilesize']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Time Format' %}
+            {{ xar_data_label({property: properties['timeformat'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['timeformat']}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'Log Levels' %}
+            {{ xar_data_label({property: properties['loglevel'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['loglevel'], layout: "vertical"}) }}
+        </div>
+    </div>
+    <div class="xar-row">
+        <div class="xar-col">
+            {% set label = 'State' %}
+            {{ xar_data_label({property: properties['state'], for: "id", label: label}) }}
+        </div>
+        <div class="xar-col">
+            {{ xar_data_input({property: properties['state']}) }}
+        </div>
+    </div>
+{% endblock %}
