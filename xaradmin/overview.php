@@ -15,10 +15,9 @@
  * the main administration function
  * This function will show the overview page with information on this module.
  *
- * @param none
- * @return array
+ * @return array|string|void
  */
-function logconfig_admin_overview()
+function logconfig_admin_overview(array $args = [], $context = null)
 {
     if (!xarSecurity::check('AdminLogConfig')) {
         return;

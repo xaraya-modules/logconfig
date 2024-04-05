@@ -15,7 +15,7 @@
  *
  * The keys are the logger object properties, the values are the corresponding fields in the configuration file
  */
-function logconfig_adminapi_get_variables()
+function logconfig_adminapi_get_variables(array $args = [], $context = null)
 {
     $vars = [
             'filename'    => 'Filename',

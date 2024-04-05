@@ -14,7 +14,7 @@
 /**
  * Is log currently on?
  */
-function logconfig_adminapi_islogon()
+function logconfig_adminapi_islogon(array $args = [], $context = null)
 {
     $logon = xarSystemVars::get(sys::CONFIG, 'Log.Enabled') && xarLog::ConfigReadable();
     return $logon;

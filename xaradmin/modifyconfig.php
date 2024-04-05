@@ -15,7 +15,7 @@
 
 // Use this version of the modifyconfig file when the module is not a  utility module
 
-function logconfig_admin_modifyconfig()
+function logconfig_admin_modifyconfig(array $args = [], $context = null)
 {
     // Security Check
     if (!xarSecurity::check('AdminLogconfig')) {
@@ -72,7 +72,12 @@ function logconfig_admin_modifyconfig()
                     $variables = ['Log.Enabled' => $logenabled];
                     xarMod::apiFunc('installer', 'admin', 'modifysystemvars', ['variables' => $variables]);
 
-                    xarController::redirect(xarController::URL('logconfig', 'admin', 'modifyconfig', ['tab' => 'general']));
+                    xarController::redirect(xarController::URL(
+                        'logconfig',
+                        'admin',
+                        'modifyconfig',
+                        ['tab' => 'general']
+                    ), null, $context);
                     break;
                 case 'tab2':
                     break;
@@ -82,7 +87,12 @@ function logconfig_admin_modifyconfig()
                     break;
             }
 
-            xarController::redirect(xarController::URL('logconfig', 'admin', 'modifyconfig', ['tab' => $data['tab']]));
+            xarController::redirect(xarController::URL(
+                'logconfig',
+                'admin',
+                'modifyconfig',
+                ['tab' => $data['tab']]
+            ), null, $context);
             // Return
             return true;
             break;

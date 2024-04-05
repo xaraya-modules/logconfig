@@ -13,7 +13,7 @@
 /**
  * Configure a logger
  */
-function logconfig_admin_modify($args)
+function logconfig_admin_modify(array $args = [], $context = null)
 {
     if (!xarVar::fetch('logger', 'str', $logger, '', xarVar::NOT_REQUIRED)) {
         return;
@@ -33,12 +33,7 @@ function logconfig_admin_modify($args)
             'modify',
             'logconfig'
         );
-        xarErrorSet(
-            XAR_USER_EXCEPTION,
-            'BAD_PARAM',
-            new SystemException($msg)
-        );
-        return $msg;
+        throw new BadParameterException(null, $msg);
     }
 
     sys::import('modules.dynamicdata.class.objects.base');
@@ -66,7 +61,7 @@ function logconfig_admin_modify($args)
 
             if ($data['exit']) {
                 // Jump to the next page
-                xarController::redirect(xarController::URL('logconfig', 'admin', 'view'));
+                xarController::redirect(xarController::URL('logconfig', 'admin', 'view'), null, $context);
                 return true;
             }
         }

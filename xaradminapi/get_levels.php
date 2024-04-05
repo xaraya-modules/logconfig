@@ -13,7 +13,7 @@
 /**
  * Gets the log levels Xaraya recognizes
  */
-function logconfig_adminapi_get_levels()
+function logconfig_adminapi_get_levels(array $args = [], $context = null)
 {
     sys::import('xaraya.log.loggers.xarLogger');
     $levels = xarLogger::$levels;

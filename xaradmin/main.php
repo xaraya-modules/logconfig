@@ -14,7 +14,7 @@
 /**
  * the main administration function
  */
-function logconfig_admin_main()
+function logconfig_admin_main(array $args = [], $context = null)
 {
     if (!xarSecurity::check('ManageLogConfig')) {
         return;

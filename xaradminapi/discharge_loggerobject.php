@@ -13,7 +13,7 @@
 /**
  * Save the values of a logger object to the configuration files
  */
-function logconfig_adminapi_discharge_loggerobject($args)
+function logconfig_adminapi_discharge_loggerobject(array $args = [], $context = null)
 {
     if (!isset($args['logger'])) {
         die(xarML('No logger object passed'));

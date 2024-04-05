@@ -13,7 +13,7 @@
 /**
  * Get the saved values and insert them into an object
  */
-function logconfig_adminapi_charge_loggerobject($args)
+function logconfig_adminapi_charge_loggerobject(array $args = [], $context = null)
 {
     if (!xarLog::configReadable()) {
         die(xarML('Cannot read the configuration file'));

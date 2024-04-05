@@ -13,7 +13,7 @@
 /**
  * A central registry of all our loggers
  */
-function logconfig_adminapi_get_loggers()
+function logconfig_adminapi_get_loggers(array $args = [], $context = null)
 {
     $loggers = [
         ['id' => 'error_log',   'name' => 'Error Log',      'object' => 'logconfig_errorlog'],

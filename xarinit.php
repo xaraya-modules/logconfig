@@ -20,9 +20,9 @@
 function logconfig_init()
 {
     # --------------------------------------------------------
-#
+    #
     # Create DD objects
-#
+    #
     PropertyRegistration::importPropertyTypes(false, ['modules/logconfig/xarproperties']);
 
     $module = 'logconfig';

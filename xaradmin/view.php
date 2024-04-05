@@ -15,7 +15,7 @@
  * This will show an overview page with the currently defined loggers.
  * @return array Data array for the template.
  */
-function logconfig_admin_view()
+function logconfig_admin_view(array $args = [], $context = null)
 {
     // Security check - important to do this as early as possible to avoid
     // potential security holes or just too much wasted processing
