@@ -13,7 +13,7 @@
 /**
  * View Loggers
  * This will show an overview page with the currently defined loggers.
- * @return array Data array for the template.
+ * @return array|void Data array for the template.
  */
 function logconfig_admin_view(array $args = [], $context = null)
 {
@@ -41,5 +41,9 @@ function logconfig_admin_view(array $args = [], $context = null)
         $data['loggers'][$logger['id']] = DataObjectFactory::getObject(['name' => $logger['object']]);
         $data['loggers'][$logger['id']] = xarMod::apiFunc('logconfig', 'admin', 'charge_loggerobject', ['logger' => $data['loggers'][$logger['id']]]);
     }
+    $data['read_sys'] = is_readable(sys::varpath() . '/config.system.php');
+    $data['read_log'] = is_readable(sys::varpath() . '/logs/config.log.php');
+    $data['write_sys'] = is_writeable(sys::varpath() . '/config.system.php');
+    $data['write_log'] = is_writeable(sys::varpath() . '/logs/config.log.php');
     return $data;
 }

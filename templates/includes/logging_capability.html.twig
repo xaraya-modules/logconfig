@@ -1,10 +1,6 @@
 {# @logconfig/includes/logging_capability.html.twig #}
 
 {% block logging_capability %}
-{% set read_sys = is_readable(xar_coremethod('sys', 'varpath') ~ '/config.system.php') %}
-    {% set read_log = is_readable(xar_coremethod('sys', 'varpath') ~ '/logs/config.log.php') %}
-    {% set write_sys = is_writeable(xar_coremethod('sys', 'varpath') ~ '/config.system.php') %}
-    {% set write_log = is_writeable(xar_coremethod('sys', 'varpath') ~ '/logs/config.log.php') %}
     
     {% if read_sys %}
 		<div style="color: green">

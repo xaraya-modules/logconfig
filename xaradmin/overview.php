@@ -23,9 +23,8 @@ function logconfig_admin_overview(array $args = [], $context = null)
         return;
     }
 
+    $data = [];
 
+    $data['context'] = $context;
     return xarTpl::module('logconfig', 'admin', 'main', $data, 'main');
-
-    // Return the template variables defined in this function
-    return $data;
 }

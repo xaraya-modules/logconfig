@@ -54,6 +54,7 @@ function logconfig_admin_modify(array $args = [], $context = null)
 
         if (!$isvalid) {
             // Bad data: redisplay the form with error messages
+            $data['context'] ??= $context;
             return xarTpl::module('logconfig', 'admin', 'modify', $data);
         } else {
             // Good data: save the data

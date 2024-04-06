@@ -58,6 +58,7 @@ function logconfig_admin_modifyconfig(array $args = [], $context = null)
                     /* Remove this for now
                         $isvalid = $data['module_settings']->checkInput();
                         if (!$isvalid) {
+                            $data['context'] ??= $context;
                             return xarTpl::module('logconfig','admin','modifyconfig', $data);
                         } else {
                             $itemid = $data['module_settings']->updateItem();
@@ -95,8 +96,12 @@ function logconfig_admin_modifyconfig(array $args = [], $context = null)
             ), null, $context);
             // Return
             return true;
-            break;
     }
     $data['authid'] = xarSec::genAuthKey();
+    $data['read_sys'] = is_readable(sys::varpath() . '/config.system.php');
+    $data['read_log'] = is_readable(sys::varpath() . '/logs/config.log.php');
+    $data['write_sys'] = is_writeable(sys::varpath() . '/config.system.php');
+    $data['write_log'] = is_writeable(sys::varpath() . '/logs/config.log.php');
+
     return $data;
 }
