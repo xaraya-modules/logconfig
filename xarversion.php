@@ -27,9 +27,11 @@ $modversion['user']         = 0;
 $modversion['class']        = 'Admin';
 $modversion['category']     = 'System';
 $modversion['dependency']     = [];
+//$modversion['namespace']      = 'Xaraya\Modules\LogConfig';
+$modversion['twigtemplates']  = true;
 $modversion['dependencyinfo'] = [
-                                0 => [
-                                        'name' => 'Xaraya Core',
-                                        'version_ge' => '2.4.0',
-                                     ],
-                                ];
+    0 => [
+        'name' => 'Xaraya Core',
+        'version_ge' => '2.4.1',
+    ],
+];
