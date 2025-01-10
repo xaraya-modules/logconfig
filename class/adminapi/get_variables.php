@@ -42,7 +42,7 @@ class GetVariablesMethod extends MethodClass
             'sqltable'    => 'SQLTable',
             'facility'    => 'Facility',
             'options'     => 'Options',
-            'sqltable'    => 'SQLTable',
+            //'sqltable'    => 'SQLTable',
         ];
 
         return $vars;

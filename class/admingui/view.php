@@ -15,6 +15,7 @@ use Xaraya\Modules\MethodClass;
 use xarSecurity;
 use xarMod;
 use xarLog;
+use DataObjectFactory;
 use sys;
 use BadParameterException;
 

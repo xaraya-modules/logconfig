@@ -16,6 +16,7 @@ namespace Xaraya\Modules\Logconfig;
 use Xaraya\Modules\InstallerClass;
 use xarMod;
 use xarMasks;
+use PropertyRegistration;
 use sys;
 use Exception;
 
@@ -54,7 +55,7 @@ class Installer extends InstallerClass
      * initialise the logconfig module
      * This function is only ever called once during the lifetime of a particular
      * module instance
-     * @return bool true on success
+     * @return bool|void true on success
      */
     public function init()
     {
