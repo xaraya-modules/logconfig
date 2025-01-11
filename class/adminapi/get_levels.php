@@ -11,6 +11,8 @@
 
 namespace Xaraya\Modules\Logconfig\AdminApi;
 
+
+use Xaraya\Modules\Logconfig\AdminApi;
 use Xaraya\Modules\MethodClass;
 use xarLogger;
 use sys;
@@ -20,6 +22,7 @@ sys::import('xaraya.modules.method');
 
 /**
  * logconfig adminapi get_levels function
+ * @extends MethodClass<AdminApi>
  */
 class GetLevelsMethod extends MethodClass
 {

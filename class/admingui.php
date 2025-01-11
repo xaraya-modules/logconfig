@@ -19,6 +19,12 @@ sys::import('modules.logconfig.class.adminapi');
 
 /**
  * Handle the logconfig admin GUI
+ *
+ * @method mixed main(array $args)
+ * @method mixed modify(array $args)
+ * @method mixed modifyconfig(array $args)
+ * @method mixed overview(array $args)
+ * @method mixed view(array $args)
  * @extends AdminGuiClass<Module>
  */
 class AdminGui extends AdminGuiClass

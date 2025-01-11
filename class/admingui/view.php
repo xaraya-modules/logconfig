@@ -11,6 +11,8 @@
 
 namespace Xaraya\Modules\Logconfig\AdminGui;
 
+
+use Xaraya\Modules\Logconfig\AdminGui;
 use Xaraya\Modules\MethodClass;
 use xarSecurity;
 use xarMod;
@@ -23,6 +25,7 @@ sys::import('xaraya.modules.method');
 
 /**
  * logconfig admin view function
+ * @extends MethodClass<AdminGui>
  */
 class ViewMethod extends MethodClass
 {

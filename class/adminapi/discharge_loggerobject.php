@@ -11,6 +11,8 @@
 
 namespace Xaraya\Modules\Logconfig\AdminApi;
 
+
+use Xaraya\Modules\Logconfig\AdminApi;
 use Xaraya\Modules\MethodClass;
 use xarLog;
 use xarMod;
@@ -21,6 +23,7 @@ sys::import('xaraya.modules.method');
 
 /**
  * logconfig adminapi discharge_loggerobject function
+ * @extends MethodClass<AdminApi>
  */
 class DischargeLoggerobjectMethod extends MethodClass
 {
