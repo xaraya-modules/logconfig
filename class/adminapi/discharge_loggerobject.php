@@ -35,11 +35,11 @@ class DischargeLoggerobjectMethod extends MethodClass
     public function __invoke(array $args = [])
     {
         if (!isset($args['logger'])) {
-            die(xarML('No logger object passed'));
+            die($this->translate('No logger object passed'));
         }
 
         if (!xarLog::configReadable()) {
-            die(xarML('Cannot read the configuration file'));
+            die($this->translate('Cannot read the configuration file'));
         }
 
         // Load the configuration file
@@ -62,7 +62,7 @@ class DischargeLoggerobjectMethod extends MethodClass
         foreach ($variables as $variable => $value) {
             if (!isset($fields[$variable])) {
                 continue;
-            }  //die(xarML('Error getting the field associated with #(1)', $variable));
+            }  //die($this->translate('Error getting the field associated with #(1)', $variable));
             $fieldname = $fields[$variable];
             $address = 'Log.' . $type . '.' . $fieldname;
 

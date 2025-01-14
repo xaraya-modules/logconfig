@@ -38,18 +38,18 @@ class ModifyMethod extends MethodClass
      */
     public function __invoke(array $args = [])
     {
-        if (!xarVar::fetch('logger', 'str', $logger, '', xarVar::NOT_REQUIRED)) {
+        if (!$this->fetch('logger', 'str', $logger, '', xarVar::NOT_REQUIRED)) {
             return;
         }
-        if (!xarVar::fetch('confirm', 'checkbox', $data['confirm'], false, xarVar::NOT_REQUIRED)) {
+        if (!$this->fetch('confirm', 'checkbox', $data['confirm'], false, xarVar::NOT_REQUIRED)) {
             return;
         }
-        if (!xarVar::fetch('exit', 'checkbox', $data['exit'], false, xarVar::NOT_REQUIRED)) {
+        if (!$this->fetch('exit', 'checkbox', $data['exit'], false, xarVar::NOT_REQUIRED)) {
             return;
         }
 
         if (empty($logger)) {
-            $msg = xarML(
+            $msg = $this->translate(
                 'Invalid #(1) for #(2) function #(3)() in module #(4)',
                 'item id',
                 'admin',
@@ -68,7 +68,7 @@ class ModifyMethod extends MethodClass
 
         if ($data['confirm']) {
             // Check for a valid confirmation key
-            if (!xarSec::confirmAuthKey()) {
+            if (!$this->confirmAuthKey()) {
                 return;
             }
 
@@ -85,7 +85,7 @@ class ModifyMethod extends MethodClass
 
                 if ($data['exit']) {
                     // Jump to the next page
-                    xarController::redirect(xarController::URL('logconfig', 'admin', 'view'), null, $this->getContext());
+                    $this->redirect($this->getUrl( 'admin', 'view'));
                     return true;
                 }
             }

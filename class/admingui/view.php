@@ -40,7 +40,7 @@ class ViewMethod extends MethodClass
     {
         // Security check - important to do this as early as possible to avoid
         // potential security holes or just too much wasted processing
-        if (!xarSecurity::check('AdminLogConfig')) {
+        if (!$this->checkAccess('AdminLogConfig')) {
             return;
         }
 

@@ -33,7 +33,7 @@ class MainMethod extends MethodClass
      */
     public function __invoke(array $args = [])
     {
-        if (!xarSecurity::check('ManageLogConfig')) {
+        if (!$this->checkAccess('ManageLogConfig')) {
             return;
         }
 
