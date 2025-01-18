@@ -39,13 +39,13 @@ class ModifyconfigMethod extends MethodClass
     public function __invoke(array $args = [])
     {
         // Security Check
-        if (!$this->checkAccess('AdminLogconfig')) {
+        if (!$this->sec()->checkAccess('AdminLogconfig')) {
             return;
         }
-        if (!$this->fetch('phase', 'str:1:100', $phase, 'modify', xarVar::NOT_REQUIRED, xarVar::PREP_FOR_DISPLAY)) {
+        if (!$this->var()->find('phase', $phase, 'str:1:100', 'modify')) {
             return;
         }
-        if (!$this->fetch('tab', 'str:1:100', $data['tab'], 'general', xarVar::NOT_REQUIRED)) {
+        if (!$this->var()->find('tab', $data['tab'], 'str:1:100', 'general')) {
             return;
         }
 
@@ -71,7 +71,7 @@ class ModifyconfigMethod extends MethodClass
 
             case 'update':
                 // Confirm authorisation code
-                if (!$this->confirmAuthKey()) {
+                if (!$this->sec()->confirmAuthKey()) {
                     return;
                 }
                 switch ($data['tab']) {
@@ -80,13 +80,13 @@ class ModifyconfigMethod extends MethodClass
                             $isvalid = $data['module_settings']->checkInput();
                             if (!$isvalid) {
                                 $data['context'] ??= $this->getContext();
-                                return xarTpl::module('logconfig','admin','modifyconfig', $data);
+                                return $this->mod()->template('modifyconfig', $data);
                             } else {
                                 $itemid = $data['module_settings']->updateItem();
                             }
                         */
                         // The overall switch to enable logging
-                        if (!$this->fetch('logenabled', 'int', $logenabled, 0, xarVar::NOT_REQUIRED)) {
+                        if (!$this->var()->find('logenabled', $logenabled, 'int', 0)) {
                             return;
                         }
 
@@ -94,7 +94,7 @@ class ModifyconfigMethod extends MethodClass
                         $variables = ['Log.Enabled' => $logenabled];
                         xarMod::apiFunc('installer', 'admin', 'modifysystemvars', ['variables' => $variables]);
 
-                        $this->redirect($this->getUrl(
+                        $this->ctl()->redirect($this->mod()->getURL(
                             'admin',
                             'modifyconfig',
                             ['tab' => 'general']
@@ -108,7 +108,7 @@ class ModifyconfigMethod extends MethodClass
                         break;
                 }
 
-                $this->redirect($this->getUrl(
+                $this->ctl()->redirect($this->mod()->getURL(
                     'admin',
                     'modifyconfig',
                     ['tab' => $data['tab']]
@@ -116,7 +116,7 @@ class ModifyconfigMethod extends MethodClass
                 // Return
                 return true;
         }
-        $data['authid'] = $this->genAuthKey();
+        $data['authid'] = $this->sec()->genAuthKey();
         $data['read_sys'] = is_readable(sys::varpath() . '/config.system.php');
         $data['read_log'] = is_readable(sys::varpath() . '/logs/config.log.php');
         $data['write_sys'] = is_writeable(sys::varpath() . '/config.system.php');

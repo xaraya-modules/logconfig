@@ -33,7 +33,7 @@ class MainMethod extends MethodClass
      */
     public function __invoke(array $args = [])
     {
-        if (!$this->checkAccess('ManageLogConfig')) {
+        if (!$this->sec()->checkAccess('ManageLogConfig')) {
             return;
         }
 

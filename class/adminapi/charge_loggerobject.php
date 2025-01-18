@@ -35,10 +35,10 @@ class ChargeLoggerobjectMethod extends MethodClass
     public function __invoke(array $args = [])
     {
         if (!xarLog::configReadable()) {
-            die($this->translate('Cannot read the configuration file'));
+            die($this->ml('Cannot read the configuration file'));
         }
         if (!isset($args['logger'])) {
-            die($this->translate('No logger object passed'));
+            die($this->ml('No logger object passed'));
         }
 
         // Get the $systemConfiguration array from the configuration file

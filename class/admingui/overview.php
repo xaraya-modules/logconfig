@@ -36,13 +36,13 @@ class OverviewMethod extends MethodClass
      */
     public function __invoke(array $args = [])
     {
-        if (!$this->checkAccess('AdminLogConfig')) {
+        if (!$this->sec()->checkAccess('AdminLogConfig')) {
             return;
         }
 
         $data = [];
 
         $data['context'] = $this->getContext();
-        return xarTpl::module('logconfig', 'admin', 'main', $data, 'main');
+        return $this->mod()->template('main', $data, 'main');
     }
 }

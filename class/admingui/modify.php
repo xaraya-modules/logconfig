@@ -38,18 +38,18 @@ class ModifyMethod extends MethodClass
      */
     public function __invoke(array $args = [])
     {
-        if (!$this->fetch('logger', 'str', $logger, '', xarVar::NOT_REQUIRED)) {
+        if (!$this->var()->find('logger', $logger, 'str', '')) {
             return;
         }
-        if (!$this->fetch('confirm', 'checkbox', $data['confirm'], false, xarVar::NOT_REQUIRED)) {
+        if (!$this->var()->find('confirm', $data['confirm'], 'checkbox', false)) {
             return;
         }
-        if (!$this->fetch('exit', 'checkbox', $data['exit'], false, xarVar::NOT_REQUIRED)) {
+        if (!$this->var()->find('exit', $data['exit'], 'checkbox', false)) {
             return;
         }
 
         if (empty($logger)) {
-            $msg = $this->translate(
+            $msg = $this->ml(
                 'Invalid #(1) for #(2) function #(3)() in module #(4)',
                 'item id',
                 'admin',
@@ -68,7 +68,7 @@ class ModifyMethod extends MethodClass
 
         if ($data['confirm']) {
             // Check for a valid confirmation key
-            if (!$this->confirmAuthKey()) {
+            if (!$this->sec()->confirmAuthKey()) {
                 return;
             }
 
@@ -78,14 +78,14 @@ class ModifyMethod extends MethodClass
             if (!$isvalid) {
                 // Bad data: redisplay the form with error messages
                 $data['context'] ??= $this->getContext();
-                return xarTpl::module('logconfig', 'admin', 'modify', $data);
+                return $this->mod()->template('modify', $data);
             } else {
                 // Good data: save the data
                 xarMod::apiFunc('logconfig', 'admin', 'discharge_loggerobject', ['logger' => $data['object']]);
 
                 if ($data['exit']) {
                     // Jump to the next page
-                    $this->redirect($this->getUrl( 'admin', 'view'));
+                    $this->ctl()->redirect($this->mod()->getURL( 'admin', 'view'));
                     return true;
                 }
             }
