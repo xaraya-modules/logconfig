@@ -62,7 +62,7 @@ class DischargeLoggerobjectMethod extends MethodClass
         foreach ($variables as $variable => $value) {
             if (!isset($fields[$variable])) {
                 continue;
-            }  //$this->exit($this->ml('Error getting the field associated with #(1)', $variable));
+            }
             $fieldname = $fields[$variable];
             $address = 'Log.' . $type . '.' . $fieldname;
 
