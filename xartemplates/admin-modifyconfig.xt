@@ -15,14 +15,14 @@
         -->
         <xar:if condition="$tab eq 'general'">
             <form method="post" action="&xar-modurl-logconfig-admin-modifyconfig;" enctype="application/x-www-form-urlencoded">
-            <!--
+            <xar:comment><!--
                 <fieldset>
                     <legend>
                         General Options
                     </legend>
                     <xar:data-form object="$module_settings"/>
                 </fieldset>
-            -->
+            --></xar:comment>
                 <fieldset>
                     <legend>Enable Logging</legend>
 					<label for="bar" title="#xarML('The cipher we are using')#" class="xar-form-label">                                
