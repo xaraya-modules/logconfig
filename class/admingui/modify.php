@@ -61,7 +61,7 @@ class ModifyMethod extends MethodClass
 
         sys::import('modules.dynamicdata.class.objects.base');
         $objectname = 'logconfig_' . $logger;
-        $data['object'] = DataObjectFactory::getObject(['name' => $objectname]);
+        $data['object'] = $this->data()->getObject(['name' => $objectname]);
         $data['object'] = xarMod::apiFunc('logconfig', 'admin', 'charge_loggerobject', ['logger' => $data['object']]);
 
         $data['tplmodule'] = 'logconfig';

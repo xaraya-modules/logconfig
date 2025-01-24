@@ -59,7 +59,7 @@ class ViewMethod extends MethodClass
 
         sys::import('modules.dynamicdata.class.objects.base');
         foreach ($definitions as $logger) {
-            $data['loggers'][$logger['id']] = DataObjectFactory::getObject(['name' => $logger['object']]);
+            $data['loggers'][$logger['id']] = $this->data()->getObject(['name' => $logger['object']]);
             $data['loggers'][$logger['id']] = xarMod::apiFunc('logconfig', 'admin', 'charge_loggerobject', ['logger' => $data['loggers'][$logger['id']]]);
         }
         $data['read_sys'] = is_readable(sys::varpath() . '/config.system.php');
