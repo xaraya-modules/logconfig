@@ -13,6 +13,7 @@ namespace Xaraya\Modules\Logconfig\AdminGui;
 
 
 use Xaraya\Modules\Logconfig\AdminGui;
+use Xaraya\Modules\Logconfig\AdminApi;
 use Xaraya\Modules\MethodClass;
 use xarVar;
 use xarMod;
@@ -35,9 +36,12 @@ class ModifyMethod extends MethodClass
 
     /**
      * Configure a logger
+     * @see AdminGui::modify()
      */
     public function __invoke(array $args = [])
     {
+        /** @var AdminApi $adminapi */
+        $adminapi = $this->adminapi();
         if (!$this->var()->find('logger', $logger, 'str', '')) {
             return;
         }
@@ -62,7 +66,7 @@ class ModifyMethod extends MethodClass
         sys::import('modules.dynamicdata.class.objects.base');
         $objectname = 'logconfig_' . $logger;
         $data['object'] = $this->data()->getObject(['name' => $objectname]);
-        $data['object'] = xarMod::apiFunc('logconfig', 'admin', 'charge_loggerobject', ['logger' => $data['object']]);
+        $data['object'] = $adminapi->charge_loggerobject(['logger' => $data['object']]);
 
         $data['tplmodule'] = 'logconfig';
 
@@ -81,7 +85,7 @@ class ModifyMethod extends MethodClass
                 return $this->mod()->template('modify', $data);
             } else {
                 // Good data: save the data
-                xarMod::apiFunc('logconfig', 'admin', 'discharge_loggerobject', ['logger' => $data['object']]);
+                $adminapi->discharge_loggerobject(['logger' => $data['object']]);
 
                 if ($data['exit']) {
                     // Jump to the next page

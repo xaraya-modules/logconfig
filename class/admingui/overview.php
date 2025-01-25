@@ -33,6 +33,7 @@ class OverviewMethod extends MethodClass
      * the main administration function
      * This function will show the overview page with information on this module.
      * @return array|string|void
+     * @see AdminGui::overview()
      */
     public function __invoke(array $args = [])
     {

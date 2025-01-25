@@ -31,10 +31,11 @@ class IslogonMethod extends MethodClass
 
     /**
      * Is log currently on?
+     * @see AdminApi::islogon()
      */
     public function __invoke(array $args = [])
     {
-        $logon = xarSystemVars::get(sys::CONFIG, 'Log.Enabled') && xarLog::ConfigReadable();
+        $logon = xarSystemVars::get(sys::CONFIG, 'Log.Enabled') && xarLog::configReadable();
         return $logon;
     }
 }

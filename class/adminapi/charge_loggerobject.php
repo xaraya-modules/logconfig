@@ -31,9 +31,12 @@ class ChargeLoggerobjectMethod extends MethodClass
 
     /**
      * Get the saved values and insert them into an object
+     * @see AdminApi::chargeLoggerobject()
      */
     public function __invoke(array $args = [])
     {
+        /** @var AdminApi $adminapi */
+        $adminapi = $this->adminapi();
         if (!xarLog::configReadable()) {
             $this->exit($this->ml('Cannot read the configuration file'));
         }
@@ -48,7 +51,7 @@ class ChargeLoggerobjectMethod extends MethodClass
         $availables = xarLog::availables();
 
         // Get all the fields used by our loggers
-        $fields = xarMod::apiFunc('logconfig', 'admin', 'get_variables');
+        $fields = $adminapi->get_variables();
 
         // Get the type of this logger
         $loggertype = $args['logger']->properties['type']->value;

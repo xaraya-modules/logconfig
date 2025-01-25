@@ -35,6 +35,7 @@ class ModifyconfigMethod extends MethodClass
 
     /**
      * Main configuration page for the logconfig module
+     * @see AdminGui::modifyconfig()
      */
     public function __invoke(array $args = [])
     {

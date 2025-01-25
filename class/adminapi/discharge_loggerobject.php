@@ -31,9 +31,12 @@ class DischargeLoggerobjectMethod extends MethodClass
 
     /**
      * Save the values of a logger object to the configuration files
+     * @see AdminApi::dischargeLoggerobject()
      */
     public function __invoke(array $args = [])
     {
+        /** @var AdminApi $adminapi */
+        $adminapi = $this->adminapi();
         if (!isset($args['logger'])) {
             $this->exit($this->ml('No logger object passed'));
         }
@@ -56,7 +59,7 @@ class DischargeLoggerobjectMethod extends MethodClass
         // Get the type
         $type = ucwords($variables['type']);
         // Get all the fields used by our loggers
-        $fields = xarMod::apiFunc('logconfig', 'admin', 'get_variables');
+        $fields = $adminapi->get_variables();
 
         // Run through each of the object's properties and get the values to be saved
         foreach ($variables as $variable => $value) {

@@ -30,6 +30,7 @@ class GetLevelsMethod extends MethodClass
 
     /**
      * Gets the log levels Xaraya recognizes
+     * @see AdminApi::getLevels()
      */
     public function __invoke(array $args = [])
     {

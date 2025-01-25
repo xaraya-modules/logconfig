@@ -29,6 +29,7 @@ class GetLoggersMethod extends MethodClass
 
     /**
      * A central registry of all our loggers
+     * @see AdminApi::getLoggers()
      */
     public function __invoke(array $args = [])
     {

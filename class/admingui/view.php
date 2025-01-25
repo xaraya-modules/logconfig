@@ -13,6 +13,7 @@ namespace Xaraya\Modules\Logconfig\AdminGui;
 
 
 use Xaraya\Modules\Logconfig\AdminGui;
+use Xaraya\Modules\Logconfig\AdminApi;
 use Xaraya\Modules\MethodClass;
 use xarSecurity;
 use xarMod;
@@ -35,9 +36,12 @@ class ViewMethod extends MethodClass
      * View Loggers
      * This will show an overview page with the currently defined loggers.
      * @return array|void Data array for the template.
+     * @see AdminGui::view()
      */
     public function __invoke(array $args = [])
     {
+        /** @var AdminApi $adminapi */
+        $adminapi = $this->adminapi();
         // Security check - important to do this as early as possible to avoid
         // potential security holes or just too much wasted processing
         if (!$this->sec()->checkAccess('AdminLogConfig')) {
@@ -45,22 +49,22 @@ class ViewMethod extends MethodClass
         }
 
         // Whether or not the fallback logger is running
-        if (xarMod::apiFunc('logconfig', 'admin', 'islogon') && xarLog::fallbackPossible() && empty(xarLog::availables())) {
+        if ($adminapi->islogon() && xarLog::fallbackPossible() && empty(xarLog::availables())) {
             $data['fallbackOn'] = true;
         } else {
             $data['fallbackOn'] = false;
         }
 
         // The name of the file the fallback logger writes to
-        $data['fallbackFile'] = xarLog::FallbackFile();
+        $data['fallbackFile'] = xarLog::fallbackFile();
 
         // The defined loggers
-        $definitions = xarMod::apiFunc('logconfig', 'admin', 'get_loggers');
+        $definitions = $adminapi->get_loggers();
 
         sys::import('modules.dynamicdata.class.objects.base');
         foreach ($definitions as $logger) {
             $data['loggers'][$logger['id']] = $this->data()->getObject(['name' => $logger['object']]);
-            $data['loggers'][$logger['id']] = xarMod::apiFunc('logconfig', 'admin', 'charge_loggerobject', ['logger' => $data['loggers'][$logger['id']]]);
+            $data['loggers'][$logger['id']] = $adminapi->charge_loggerobject(['logger' => $data['loggers'][$logger['id']]]);
         }
         $data['read_sys'] = is_readable(sys::varpath() . '/config.system.php');
         $data['read_log'] = is_readable(sys::varpath() . '/logs/config.log.php');

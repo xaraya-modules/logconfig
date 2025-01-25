@@ -30,6 +30,7 @@ class GetVariablesMethod extends MethodClass
     /**
      * A central registry of all the variables our loggers use
      * The keys are the logger object properties, the values are the corresponding fields in the configuration file
+     * @see AdminApi::getVariables()
      */
     public function __invoke(array $args = [])
     {
