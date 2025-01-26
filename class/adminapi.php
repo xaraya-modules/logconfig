@@ -21,10 +21,10 @@ sys::import('xaraya.modules.adminapi');
  *
  * @method mixed chargeLoggerobject(array $args)
  * @method mixed dischargeLoggerobject(array $args)
- * @method mixed getLevels(array $args)
+ * @method mixed getLevels(array $args = [])
  * @method mixed getLoggers(array $args)
  * @method mixed getVariables(array $args)
- * @method mixed islogon(array $args)
+ * @method mixed islogon(array $args = [])
  * @extends AdminApiClass<Module>
  */
 class AdminApi extends AdminApiClass
