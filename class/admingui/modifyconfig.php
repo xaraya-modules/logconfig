@@ -50,7 +50,7 @@ class ModifyconfigMethod extends MethodClass
             return;
         }
 
-        $data['module_settings'] = xarMod::apiFunc('base', 'admin', 'getmodulesettings', ['module' => 'logconfig']);
+        $data['module_settings'] = $this->mod()->apiFunc('base', 'admin', 'getmodulesettings', ['module' => 'logconfig']);
         $data['module_settings']->setFieldList('items_per_page, use_module_alias, module_alias_name, enable_short_urls');
         $data['module_settings']->getItem();
 
@@ -93,7 +93,7 @@ class ModifyconfigMethod extends MethodClass
 
                         // Update the config.system file
                         $variables = ['Log.Enabled' => $logenabled];
-                        xarMod::apiFunc('installer', 'admin', 'modifysystemvars', ['variables' => $variables]);
+                        $this->mod()->apiFunc('installer', 'admin', 'modifysystemvars', ['variables' => $variables]);
 
                         $this->ctl()->redirect($this->mod()->getURL(
                             'admin',

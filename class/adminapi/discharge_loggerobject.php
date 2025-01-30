@@ -75,7 +75,7 @@ class DischargeLoggerobjectMethod extends MethodClass
             }
         }
         // Save the values to the configuration file
-        xarMod::apiFunc('installer', 'admin', 'modifysystemvars', ['variables' => $to_be_saved, 'scope' => 'Log']);
+        $this->mod()->apiFunc('installer', 'admin', 'modifysystemvars', ['variables' => $to_be_saved, 'scope' => 'Log']);
 
         // Handle state property.
 
@@ -94,7 +94,7 @@ class DischargeLoggerobjectMethod extends MethodClass
         }
         $active_loggers['Log.Available'] = implode(',', $availables);
         // Save the values to the configuration file
-        xarMod::apiFunc('installer', 'admin', 'modifysystemvars', ['variables' => $active_loggers, 'scope' => 'System']);
+        $this->mod()->apiFunc('installer', 'admin', 'modifysystemvars', ['variables' => $active_loggers, 'scope' => 'System']);
         return true;
     }
 }
