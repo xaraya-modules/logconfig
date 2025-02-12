@@ -15,7 +15,7 @@ use Xaraya\Modules\AdminGuiClass;
 use sys;
 
 sys::import('xaraya.modules.admingui');
-sys::import('modules.logconfig.class.adminapi');
+sys::import('modules.logconfig.adminapi');
 
 /**
  * Handle the logconfig admin GUI
