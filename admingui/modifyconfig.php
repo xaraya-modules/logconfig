@@ -43,12 +43,8 @@ class ModifyconfigMethod extends MethodClass
         if (!$this->sec()->checkAccess('AdminLogconfig')) {
             return;
         }
-        if (!$this->var()->find('phase', $phase, 'str:1:100', 'modify')) {
-            return;
-        }
-        if (!$this->var()->find('tab', $data['tab'], 'str:1:100', 'general')) {
-            return;
-        }
+        $this->var()->find('phase', $phase, 'str:1:100', 'modify');
+        $this->var()->find('tab', $data['tab'], 'str:1:100', 'general');
 
         $data['module_settings'] = $this->mod()->apiFunc('base', 'admin', 'getmodulesettings', ['module' => 'logconfig']);
         $data['module_settings']->setFieldList('items_per_page, use_module_alias, module_alias_name, enable_short_urls');
@@ -87,9 +83,7 @@ class ModifyconfigMethod extends MethodClass
                             }
                         */
                         // The overall switch to enable logging
-                        if (!$this->var()->find('logenabled', $logenabled, 'int', 0)) {
-                            return;
-                        }
+                        $this->var()->find('logenabled', $logenabled, 'int', 0);
 
                         // Update the config.system file
                         $variables = ['Log.Enabled' => $logenabled];

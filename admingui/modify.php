@@ -42,15 +42,9 @@ class ModifyMethod extends MethodClass
     {
         /** @var AdminApi $adminapi */
         $adminapi = $this->adminapi();
-        if (!$this->var()->find('logger', $logger, 'str', '')) {
-            return;
-        }
-        if (!$this->var()->find('confirm', $data['confirm'], 'checkbox', false)) {
-            return;
-        }
-        if (!$this->var()->find('exit', $data['exit'], 'checkbox', false)) {
-            return;
-        }
+        $this->var()->find('logger', $logger, 'str', '');
+        $this->var()->find('confirm', $data['confirm'], 'checkbox', false);
+        $this->var()->find('exit', $data['exit'], 'checkbox', false);
 
         if (empty($logger)) {
             $msg = $this->ml(
