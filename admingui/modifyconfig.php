@@ -94,7 +94,7 @@ class ModifyconfigMethod extends MethodClass
                             'modifyconfig',
                             ['tab' => 'general']
                         ));
-                        break;
+                        return true;
                     case 'tab2':
                         break;
                     case 'tab3':
