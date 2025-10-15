@@ -15,7 +15,6 @@ namespace Xaraya\Modules\Logconfig\AdminApi;
 use Xaraya\Modules\Logconfig\AdminApi;
 use Xaraya\Modules\MethodClass;
 use sys;
-use BadParameterException;
 
 sys::import('xaraya.modules.method');
 

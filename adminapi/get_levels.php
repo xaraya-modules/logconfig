@@ -16,7 +16,6 @@ use Xaraya\Modules\Logconfig\AdminApi;
 use Xaraya\Modules\MethodClass;
 use xarLogger;
 use sys;
-use BadParameterException;
 
 sys::import('xaraya.modules.method');
 

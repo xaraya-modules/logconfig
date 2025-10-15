@@ -18,7 +18,6 @@ use xarMod;
 use xarMasks;
 use PropertyRegistration;
 use sys;
-use Exception;
 
 sys::import('xaraya.modules.installer');
 

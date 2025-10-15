@@ -15,12 +15,6 @@ namespace Xaraya\Modules\Logconfig\AdminGui;
 use Xaraya\Modules\Logconfig\AdminGui;
 use Xaraya\Modules\Logconfig\AdminApi;
 use Xaraya\Modules\MethodClass;
-use xarVar;
-use xarMod;
-use xarSec;
-use xarTpl;
-use xarController;
-use DataObjectFactory;
 use sys;
 use BadParameterException;
 
