@@ -23,7 +23,7 @@ class Tables
      *
      * @return array with tablenames (none for this module)
      */
-    public function __invoke(?string $prefix = null)
+    public function __invoke(string $prefix = 'xar')
     {
         // Initialise table array
         $xartable = [];
