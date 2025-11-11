@@ -11,14 +11,11 @@
 
 namespace Xaraya\Modules\Logconfig\AdminApi;
 
-
 use Xaraya\Modules\Logconfig\AdminApi;
 use Xaraya\Modules\MethodClass;
 use xarSystemVars;
 use xarLog;
 use sys;
-
-sys::import('xaraya.modules.method');
 
 /**
  * logconfig adminapi islogon function

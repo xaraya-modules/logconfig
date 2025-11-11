@@ -11,12 +11,9 @@
 
 namespace Xaraya\Modules\Logconfig\AdminGui;
 
-
 use Xaraya\Modules\Logconfig\AdminGui;
 use Xaraya\Modules\MethodClass;
 use sys;
-
-sys::import('xaraya.modules.method');
 
 /**
  * logconfig admin modifyconfig function

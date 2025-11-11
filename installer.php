@@ -19,8 +19,6 @@ use xarMasks;
 use PropertyRegistration;
 use sys;
 
-sys::import('xaraya.modules.installer');
-
 /**
  * Handle module installer functions
  *

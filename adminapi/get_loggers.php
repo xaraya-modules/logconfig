@@ -11,12 +11,8 @@
 
 namespace Xaraya\Modules\Logconfig\AdminApi;
 
-
 use Xaraya\Modules\Logconfig\AdminApi;
 use Xaraya\Modules\MethodClass;
-use sys;
-
-sys::import('xaraya.modules.method');
 
 /**
  * logconfig adminapi get_loggers function

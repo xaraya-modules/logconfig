@@ -11,14 +11,10 @@
 
 namespace Xaraya\Modules\Logconfig\AdminGui;
 
-
 use Xaraya\Modules\Logconfig\AdminGui;
 use Xaraya\Modules\Logconfig\AdminApi;
 use Xaraya\Modules\MethodClass;
-use sys;
 use BadParameterException;
-
-sys::import('xaraya.modules.method');
 
 /**
  * logconfig admin modify function
@@ -51,7 +47,6 @@ class ModifyMethod extends MethodClass
             throw new BadParameterException(null, $msg);
         }
 
-        sys::import('modules.dynamicdata.class.objects.base');
         $objectname = 'logconfig_' . $logger;
         $data['object'] = $this->data()->getObject(['name' => $objectname]);
         $data['object'] = $adminapi->charge_loggerobject(['logger' => $data['object']]);
@@ -77,7 +72,7 @@ class ModifyMethod extends MethodClass
 
                 if ($data['exit']) {
                     // Jump to the next page
-                    $this->ctl()->redirect($this->mod()->getURL( 'admin', 'view'));
+                    $this->ctl()->redirect($this->mod()->getURL('admin', 'view'));
                     return true;
                 }
             }

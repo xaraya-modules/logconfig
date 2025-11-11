@@ -12,9 +12,6 @@
 namespace Xaraya\Modules\Logconfig;
 
 use Xaraya\Modules\AdminApiClass;
-use sys;
-
-sys::import('xaraya.modules.adminapi');
 
 /**
  * Handle the logconfig admin API

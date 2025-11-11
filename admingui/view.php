@@ -11,14 +11,11 @@
 
 namespace Xaraya\Modules\Logconfig\AdminGui;
 
-
 use Xaraya\Modules\Logconfig\AdminGui;
 use Xaraya\Modules\Logconfig\AdminApi;
 use Xaraya\Modules\MethodClass;
 use xarLog;
 use sys;
-
-sys::import('xaraya.modules.method');
 
 /**
  * logconfig admin view function
@@ -57,7 +54,6 @@ class ViewMethod extends MethodClass
         // The defined loggers
         $definitions = $adminapi->get_loggers();
 
-        sys::import('modules.dynamicdata.class.objects.base');
         foreach ($definitions as $logger) {
             $data['loggers'][$logger['id']] = $this->data()->getObject(['name' => $logger['object']]);
             $data['loggers'][$logger['id']] = $adminapi->charge_loggerobject(['logger' => $data['loggers'][$logger['id']]]);
