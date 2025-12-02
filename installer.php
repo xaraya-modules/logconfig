@@ -14,7 +14,6 @@
 namespace Xaraya\Modules\Logconfig;
 
 use Xaraya\Modules\InstallerClass;
-use xarMod;
 use xarMasks;
 use PropertyRegistration;
 use sys;
@@ -73,7 +72,7 @@ class Installer extends InstallerClass
             'logconfig_sql',
             'logconfig_syslog',
         ];
-        if (!xarMod::apiFunc('modules', 'admin', 'standardinstall', ['module' => $module, 'objects' => $objects])) {
+        if (!$this->mod()->apiFunc('modules', 'admin', 'standardinstall', ['module' => $module, 'objects' => $objects])) {
             return;
         }
 
@@ -119,6 +118,6 @@ class Installer extends InstallerClass
     public function delete()
     {
         $module = 'logconfig';
-        return xarMod::apiFunc('modules', 'admin', 'standarddeinstall', ['module' => $module]);
+        return $this->mod()->apiFunc('modules', 'admin', 'standarddeinstall', ['module' => $module]);
     }
 }

@@ -13,7 +13,6 @@ namespace Xaraya\Modules\Logconfig\AdminApi;
 
 use Xaraya\Modules\Logconfig\AdminApi;
 use Xaraya\Modules\MethodClass;
-use xarSystemVars;
 use xarLog;
 use sys;
 
@@ -31,7 +30,7 @@ class IslogonMethod extends MethodClass
      */
     public function __invoke(array $args = [])
     {
-        $logon = xarSystemVars::get(sys::CONFIG, 'Log.Enabled') && xarLog::configReadable();
+        $logon = $this->sysConfig()->getVar('Log.Enabled') && xarLog::configReadable();
         return $logon;
     }
 }

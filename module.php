@@ -14,7 +14,7 @@ namespace Xaraya\Modules\Logconfig;
 use Xaraya\Modules\ModuleClass;
 
 /**
- * Get logconfig module classes via xarMod::getModule()
+ * Get logconfig module classes via xar::mod()->getModule()
  */
 class Module extends ModuleClass
 {
