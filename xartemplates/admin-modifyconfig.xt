@@ -25,16 +25,16 @@
             --></xar:comment>
                 <fieldset>
                     <legend>Enable Logging</legend>
-					<label for="bar" title="#xarML('The cipher we are using')#" class="xar-form-label">                                
+					<label for="bar" title="#$xar->ml('The cipher we are using')#" class="xar-form-label">                                
 						Enable logging:                                
 					</label>
 					<xar:set name="options">
 						array(
-							array('id' => 0, 'name' => xarML('No')),
-							array('id' => 1, 'name' => xarML('Yes')),
+							array('id' => 0, 'name' => $xar->ml('No')),
+							array('id' => 1, 'name' => $xar->ml('Yes')),
 						)
 					</xar:set>
-					<xar:set name="checked">xarSystemVars::get(sys::CONFIG, 'Log.Enabled')</xar:set>
+					<xar:set name="checked">$xar->sysConfig()->getVar('Log.Enabled')</xar:set>
 					<xar:data-input type="radio" name="logenabled" value="$checked" options="$options"/>
                 </fieldset>
                 <input type="hidden" name="tab" id="tab" value="#$tab#"/>

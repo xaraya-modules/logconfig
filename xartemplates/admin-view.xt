@@ -29,7 +29,7 @@
 							<xar:data-output property="$properties['state']"/>
 						</td>
 						<td style="text-align: center">
-							<a href="#xarController::URL('logconfig','admin','modify',array('logger' => $properties['type']->value))#">Configure</a>
+							<a href="#$xar->ctl()->URL('logconfig','admin','modify',array('logger' => $properties['type']->value))#">Configure</a>
 						</td>
 
 					</tr>
@@ -43,7 +43,7 @@
 		</xar:ml>
 		<br />
 		For this fallback mechanism to work, it is necessary for this file to exist and be writable by the http server user. It also requires that logging be enabled but all available loggers be inactive.
-		<xar:if condition="xarMod::apiFunc('logconfig', 'admin', 'islogon')">
+		<xar:if condition="$xar->mod()->apiFunc('logconfig', 'admin', 'islogon')">
 			<div style="color: green">
 				Logging is currently enabled
 			</div>
