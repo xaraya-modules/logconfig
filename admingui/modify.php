@@ -64,8 +64,7 @@ class ModifyMethod extends MethodClass
 
             if (!$isvalid) {
                 // Bad data: redisplay the form with error messages
-                $data['context'] ??= $this->getContext();
-                return $this->mod()->template('modify', $data);
+                return $data;
             } else {
                 // Good data: save the data
                 $adminapi->discharge_loggerobject(['logger' => $data['object']]);
